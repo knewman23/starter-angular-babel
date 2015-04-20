@@ -55,6 +55,11 @@ To see how this starter has evolved over time, read the [Changelog](CHANGELOG.md
 - move to gulp 4.0 once it gets released
 
 
+
+# License
+[MIT License](http://en.wikipedia.org/wiki/MIT_License)
+
+
 [generator-gulp-angular]: https://github.com/Swiip/generator-gulp-angular
 [angular-bootstrap]: https://github.com/angular-ui/bootstrap
 [angular]: https://github.com/angular/angular.js
