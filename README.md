@@ -13,8 +13,6 @@ starter-angular-babel was built by running [generator-gulp-angular][generator-gu
 - [Angular UI router][ui-router]
 - [node-sass][node-sass] for fast [libsass][libsass]-based CSS pre-processing
 
-Then it was married with the standards, structure, and content of [starter-angular-fractal][starter-angular-fractal].
-
 
 
 ## Does it matter where I put my files?
