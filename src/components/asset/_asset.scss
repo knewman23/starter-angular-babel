@@ -1,0 +1,16 @@
+asset {
+
+  @media (min-width: $screen-sm-min) {
+    height: 12em;
+    padding: 0.5em;
+  }
+
+  h3 {
+    margin: 0.5em 0;
+  }
+  img {
+    display: inline;
+    margin-right: 0.25em;
+    width: 50px;
+  }
+}
