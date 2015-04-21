@@ -2,13 +2,11 @@
 
 var gulp = require('gulp');
 
+var _ = require('lodash');
+
 var $ = require('gulp-load-plugins')({
-  pattern: ['gulp-*', 'main-bower-files', 'uglify-save-license', 'del', 'rev-del']
+  pattern: ['gulp-*', 'main-bower-files', 'uglify-save-license', 'del']
 });
-
-function replaceImagePath(s) {
-
-}
 
 module.exports = function(options, paths) {
   // If you want an html partial/template/view to be templatecached, make sure it ends with '.template.html' (e.g. 'someDirective.template.html'). Otherwise, it will be copied and minified in the html task. Be sure to point to the correct template file path in your directive templateUrl.
@@ -29,7 +27,7 @@ module.exports = function(options, paths) {
       .pipe(gulp.dest(paths.tmpPartials + '/'));
   });
 
-  gulp.task('html', ['inject', 'partials'], function () {
+  gulp.task('dist', ['inject', 'partials'], function () {
     var partialsInjectFile = gulp.src(paths.tmpPartials + '/templateCacheHtml.js', { read: false });
     var partialsInjectOptions = {
       starttag: '<!-- inject:partials -->',
@@ -48,44 +46,42 @@ module.exports = function(options, paths) {
         paths.tmpServe + '/index.html',
         // and all html files in src directory
         paths.src + '/**/*.html',
-        // ignore all template files, since they get put in templatecache
+        // ignore all template files, since they get put in templatecache by the 'partials' task
         '!' + paths.src + '/**/*.template.html',
         // ignore the src index.html since we already have the tmp one
         '!' + paths.src + '/index.html'
       ])
+      .pipe($.debug({title: 'SOURCE FILES:'}))
       // STEP: index.html file injection and useref
       .pipe(indexHtmlFilter)
-      .pipe($.debug({title: 'SOURCE INDEX.HTML FILE:'}))
       // inject the templateCacheHtml.js file into index.html
       .pipe($.inject(partialsInjectFile, partialsInjectOptions))
-      // concat all assets in build blocks with useref
+      // .pipe($.debug({title: 'BEFORE useref.assets():'}))
+      // concat the js and css files in the build blocks of index.html and add the resulting files to the stream
       .pipe(assets = $.useref.assets())
-      // .pipe($.debug({title: 'AFTER USEREF:'}))
-      .pipe($.rev())
+      // .pipe($.debug({title: 'AFTER useref.assets():'}))
 
       // STEP: JS files
       .pipe(jsFilter)
-      .pipe($.debug({title: 'JS FILES:'}))
+      // .pipe($.debug({title: 'JS FILES:'}))
       .pipe($.ngAnnotate())
       .pipe($.uglify({ preserveComments: $.uglifySaveLicense })).on('error', options.errorHandler('Uglify'))
       .pipe(jsFilter.restore())
 
       // STEP: CSS files
       .pipe(cssFilter)
-      .pipe($.debug({title: 'CSS FILES:'}))
+      // .pipe($.debug({title: 'CSS FILES:'}))
       // replace the font paths with the path to the font folder in the dist folder
       .pipe($.replace('/bower_components/bootstrap-sass/assets/fonts/bootstrap/', '../assets/fonts/'))
       .pipe($.csso())
       .pipe(cssFilter.restore())
       .pipe(assets.restore())
-      // .pipe($.debug({title: 'AFTER USEREF-ASSETS:'}))
       .pipe($.useref())
-      .pipe($.revReplace())
       .pipe(indexHtmlFilter.restore())
 
       // STEP: HTML files
       .pipe(htmlFilter)
-      .pipe($.debug({title: 'HTML FILES:'}))
+      // .pipe($.debug({title: 'HTML FILES:'}))
       .pipe($.minifyHtml({
         empty: true,
         spare: true,
@@ -94,14 +90,12 @@ module.exports = function(options, paths) {
       }))
       .pipe(htmlFilter.restore())
 
-      // STEP: Put everything in dist folder
-      .pipe($.debug({title: 'ALL DIST FILES:'}))
-      .pipe(gulp.dest(paths.dist + '/'))
+      // STEP: Write everything to dist folder
+      .pipe($.debug({title: 'DIST FILES:'}))
+      .pipe(gulp.dest(paths.tmpDist + '/'))
       // show some stats about the size of your project
-      .pipe( $.size({ title: paths.dist + '/', showFiles: true }) )
-      .pipe($.rev.manifest())
-      .pipe( $.revDel({dest: paths.dist}) ) // delete old, unused fingerprinted files based on gulp-rev's manifest file
-      .pipe(gulp.dest(paths.dist + '/')); // write rev manifest to build dir;
+      .pipe( $.size({ title: paths.tmpDist + '/', showFiles: true }) )
+      .pipe(gulp.dest(paths.tmpDist + '/'));
   });
 
   // Fonts from bower dependencies and custom ones from this app
@@ -111,7 +105,7 @@ module.exports = function(options, paths) {
     ].concat($.mainBowerFiles()))
       .pipe($.filter('**/*.{eot,svg,ttf,woff,woff2}'))
       .pipe($.flatten())
-      .pipe(gulp.dest(paths.distFonts + '/'));
+      .pipe(gulp.dest(paths.tmpDistFonts + '/'));
   });
 
   gulp.task('images', function () {
@@ -120,12 +114,25 @@ module.exports = function(options, paths) {
     ])
       // .pipe($.debug({title: 'SOURCE IMAGES:'}))
       .pipe($.flatten())
-      .pipe(gulp.dest(paths.distImages + '/'));
+      .pipe(gulp.dest(paths.tmpDistImages + '/'));
   });
+
+
+  var revAll = new $.revAll();
+
+  // Revision everything in tmp dist directory and write to final dist location
+  gulp.task('rev', ['dist', 'fonts', 'images'], function() {
+    gulp.src(paths.tmpDist + '/**/*')
+      .pipe(revAll.revision())
+      .pipe(gulp.dest(paths.dist + '/')) //write revisioned files to dist
+      .pipe(revAll.manifestFile())
+      .pipe(gulp.dest(paths.dist + '/')); //write rev manifest to dist
+  });
+
 
   gulp.task('clean', function (done) {
     $.del([paths.dist + '/', paths.tmp + '/'], done);
   });
 
-  gulp.task('build', ['html', 'fonts', 'images']);
+  gulp.task('build', ['rev']);
 };

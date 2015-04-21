@@ -15,8 +15,8 @@ $icon-font-path: "/bower_components/bootstrap-sass/assets/fonts/bootstrap/";
 
 /* Do not remove the below comments. They are the placeholders used by gulp-inject to inject all your scss files automatically */
 // injector
-@import '../components/asset/_asset.scss';
 @import '../pages/home/_home.scss';
+@import '../components/asset/_asset.scss';
 // endinjector
 
 
