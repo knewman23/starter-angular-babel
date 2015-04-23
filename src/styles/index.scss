@@ -2,7 +2,7 @@
 
 //===== Dependencies SCSS
 
-$icon-font-path: "/bower_components/bootstrap-sass/assets/fonts/bootstrap/";
+$icon-font-path: "../../bower_components/bootstrap-sass/assets/fonts/bootstrap/";
 
 // Manually set the import paths of your dependency paths here
 @import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap";
@@ -15,8 +15,8 @@ $icon-font-path: "/bower_components/bootstrap-sass/assets/fonts/bootstrap/";
 
 /* Do not remove the below comments. They are the placeholders used by gulp-inject to inject all your scss files automatically */
 // injector
-@import '../pages/home/_home.scss';
 @import '../components/asset/_asset.scss';
+@import '../pages/home/_home.scss';
 // endinjector
 
 

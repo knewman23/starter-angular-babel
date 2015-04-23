@@ -21,7 +21,7 @@ module.exports = function(options, paths) {
       }))
       .pipe($.debug({title: 'PARTIALS TO BE TEMPLATECACHED:'}))
       .pipe($.angularTemplatecache('templateCacheHtml.js', {
-        // module name is same as appName by default - this can be changed of course if your module name differs from app name
+        // module name is same as appName by default - this can be changed of course if your module name differs from appName
         module: options.appName
       }))
       .pipe(gulp.dest(paths.tmpPartials + '/'));
@@ -51,12 +51,12 @@ module.exports = function(options, paths) {
         // ignore the src index.html since we already have the tmp one
         '!' + paths.src + '/index.html'
       ])
-      .pipe($.debug({title: 'SOURCE FILES:'}))
+      // .pipe($.debug({title: 'SOURCE FILES:'}))
       // STEP: index.html file injection and useref
       .pipe(indexHtmlFilter)
+      // .pipe($.debug({title: 'JUST INDEX.HTML:'}))
       // inject the templateCacheHtml.js file into index.html
       .pipe($.inject(partialsInjectFile, partialsInjectOptions))
-      // .pipe($.debug({title: 'BEFORE useref.assets():'}))
       // concat the js and css files in the build blocks of index.html and add the resulting files to the stream
       .pipe(assets = $.useref.assets())
       // .pipe($.debug({title: 'AFTER useref.assets():'}))
@@ -72,7 +72,7 @@ module.exports = function(options, paths) {
       .pipe(cssFilter)
       // .pipe($.debug({title: 'CSS FILES:'}))
       // replace the font paths with the path to the font folder in the dist folder
-      .pipe($.replace('/bower_components/bootstrap-sass/assets/fonts/bootstrap/', '../assets/fonts/'))
+      .pipe($.replace('../../bower_components/bootstrap-sass/assets/fonts/bootstrap/', '../assets/fonts/'))
       .pipe($.csso())
       .pipe(cssFilter.restore())
       .pipe(assets.restore())
@@ -91,11 +91,10 @@ module.exports = function(options, paths) {
       .pipe(htmlFilter.restore())
 
       // STEP: Write everything to dist folder
-      .pipe($.debug({title: 'DIST FILES:'}))
+      // .pipe($.debug({title: 'DIST FILES:'}))
       .pipe(gulp.dest(paths.tmpDist + '/'))
       // show some stats about the size of your project
-      .pipe( $.size({ title: paths.tmpDist + '/', showFiles: true }) )
-      .pipe(gulp.dest(paths.tmpDist + '/'));
+      .pipe( $.size({ title: paths.tmpDist + '/', showFiles: true }) );
   });
 
   // Fonts from bower dependencies and custom ones from this app
@@ -113,16 +112,18 @@ module.exports = function(options, paths) {
       paths.images + '/**/*'
     ])
       // .pipe($.debug({title: 'SOURCE IMAGES:'}))
-      .pipe($.flatten())
       .pipe(gulp.dest(paths.tmpDistImages + '/'));
   });
 
 
-  var revAll = new $.revAll();
+  // Setup gulp-rev-all, stop it from renaming index.html and favicon.ico
+  var revAll = new $.revAll({
+    dontRenameFile: [/^\/favicon.ico$/g, /^\/index.html/g]
+  });
 
-  // Revision everything in tmp dist directory and write to final dist location
+  // Revision all the things in tmp dist directory and write to final dist location
   gulp.task('rev', ['dist', 'fonts', 'images'], function() {
-    gulp.src(paths.tmpDist + '/**/*')
+    return gulp.src(paths.tmpDist + '/**/*')
       .pipe(revAll.revision())
       .pipe(gulp.dest(paths.dist + '/')) //write revisioned files to dist
       .pipe(revAll.manifestFile())
