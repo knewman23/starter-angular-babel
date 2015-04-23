@@ -34,8 +34,9 @@ module.exports = function(options, paths) {
     ])
       // STEP: inject paths of scss files in this app
       .pipe($.inject(injectFiles, injectOptions))
-      // write the injected paths to the source file so we can see the result of the injection
-      .pipe(gulp.dest(paths.styles + '/'))
+      // TODO: write something that will write the resulting scss to .tmp so we can see the result of the injection, but will not modify the source file in the stream
+      // In the meantime, you can use the below for debugging if you want to see what is injected, but it is annoying with version control because the file is always changing.
+      // .pipe(gulp.dest(paths.styles + '/'))
 
       // NOTE: If you want to re-enable wiredep of dependencies, you will need to add comments like the two below to index.scss, and remove the manual import paths:
       // bower:scss

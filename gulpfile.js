@@ -34,6 +34,7 @@ var paths = {
   fonts: 'src/assets/fonts',
   tmp: '.tmp',
   tmpPartials: '.tmp/partials',
+  tmpStyles: '.tmp/styles',
   tmpServe: '.tmp/serve',
   tmpDist: '.tmp/dist',
   tmpDistScripts: '.tmp/dist/scripts',
