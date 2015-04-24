@@ -2,11 +2,11 @@
 
 /**
  * @ngdoc controller
- * @name <%= appName %>.controller:<%= cameledName %>Controller
+ * @name <%= appName %>.controller:<%= cameledName %>
  * @description
  */
 
-class <%= cameledName %>Controller {
+class <%= cameledName %> {
   /* @ngInject */
   constructor () {
 
@@ -15,4 +15,4 @@ class <%= cameledName %>Controller {
   }
 }
 
-export default <%= cameledName %>Controller;
+export default <%= cameledName %>;

@@ -1,6 +1,6 @@
 'use strict';
 
-describe('Controller: <%= cameledName %>Controller', function(){
+describe('Controller: <%= cameledName %>', function(){
   var scope;
 
   beforeEach(module('<%= appName %>'));
@@ -11,7 +11,7 @@ describe('Controller: <%= cameledName %>Controller', function(){
 
   it('should do something', inject(function($controller) {
 
-    $controller('<%= cameledName %>Controller', {
+    $controller('<%= cameledName %>', {
       $scope: scope
     });
 

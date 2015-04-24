@@ -12,7 +12,7 @@ describe('controllers', function(){
   it('should define more than 5 open source assets', inject(function($controller) {
     expect(scope.openAssets).toBeUndefined();
 
-    $controller('HomeController', {
+    $controller('Home', {
       $scope: scope
     });
 

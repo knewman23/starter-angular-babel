@@ -1,6 +1,6 @@
 'use strict';
 
-class HomeController {
+class Home {
   /* @ngInject */
   constructor (assetsService, userService) {
 
@@ -11,4 +11,4 @@ class HomeController {
   }
 }
 
-export default HomeController;
+export default Home;

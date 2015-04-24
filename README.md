@@ -51,7 +51,7 @@ To see how this starter has evolved over time, read the [Changelog](CHANGELOG.md
 
 ## TODO
 - sourcemaps in production? (will require a refactor, as dev scripts.js/styles.js tasks are not used in build.js, so build.js can't currently see the source, as it builds from what is already in .tmp folder)
-- in the gulp build task, handle image references in dependencies
+- in the gulp build task, handle image references in dependencies better (don't change the folder structure, just bring them in with their existing structure?) 
 - move to gulp 4.0 once it gets released
 
 
