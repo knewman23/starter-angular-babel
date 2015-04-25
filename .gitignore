@@ -38,5 +38,6 @@ bower_components
 node_modules
 .sass-cache
 .tmp
+.publish
 dist
 coverage
