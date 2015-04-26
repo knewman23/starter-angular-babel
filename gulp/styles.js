@@ -15,8 +15,10 @@ module.exports = function(options, paths) {
     };
 
     var injectFiles = gulp.src([
-      paths.src + '/**/*.scss',
-      '!' + paths.styles + '/index.scss'
+      paths.src + '/styles/**/*.scss', //shared scss first
+      paths.src + '/pages/**/*.scss', //then pages
+      paths.src + '/components/**/*.scss', //then components
+      '!' + paths.styles + '/index.scss' //ignore index.scss
     ], { read: false });
 
     var injectOptions = {
