@@ -1,7 +1,7 @@
 # starter-angular-babel
 Want to build a single-page application using [Angular][angular] and ES6/ES2015? Then this starter is for you!
 
-starter-angular-babel is similar to [starter-angular-fractal][starter-angular-fractal], so it shares a fractal hierarchy approach based on [Google's recommendations for AngularJS applications][google-recommendations]. 
+starter-angular-babel follows the fractal hierarchy approach [recommended by Google for AngularJS applications][google-recommendations].
 
 
 
