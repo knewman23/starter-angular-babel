@@ -1,6 +1,6 @@
 'use strict';
 
-/* ngInject */
+/* @ngInject */
 function assetsService() {
 
   var openAssets = [
