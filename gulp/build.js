@@ -74,7 +74,7 @@ module.exports = function(options, paths) {
       // .pipe($.debug({title: 'CSS FILES:'}))
       // replace the font paths with the path to the font folder in the dist folder
       .pipe($.replace('../../bower_components/bootstrap-sass/assets/fonts/bootstrap/', '../assets/fonts/'))
-      .pipe($.csso())
+      .pipe($.minifyCss())
       .pipe(cssFilter.restore())
       .pipe(assets.restore())
       .pipe($.useref())
