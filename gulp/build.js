@@ -4,9 +4,10 @@ var gulp = require('gulp');
 
 var _ = require('lodash');
 
-var $ = require('gulp-load-plugins')({
-  pattern: ['gulp-*', 'main-bower-files', 'uglify-save-license', 'del']
-});
+var $ = require('gulp-load-plugins')();
+var del = require('del');
+var mainBowerFiles = require('main-bower-files');
+var uglifySaveLicense = require('uglify-save-license');
 
 module.exports = function(options, paths) {
   // If you want an html partial/template/view to be templatecached, make sure it ends with '.template.html' (e.g. 'someDirective.template.html'). Otherwise, it will be copied and minified in the html task. Be sure to point to the correct template file path in your directive templateUrl.
@@ -65,7 +66,7 @@ module.exports = function(options, paths) {
       .pipe(jsFilter)
       // .pipe($.debug({title: 'JS FILES:'}))
       .pipe($.ngAnnotate())
-      .pipe($.uglify({ preserveComments: $.uglifySaveLicense })).on('error', options.errorHandler('Uglify'))
+      .pipe($.uglify({ preserveComments: uglifySaveLicense })).on('error', options.errorHandler('Uglify'))
       .pipe(jsFilter.restore())
 
       // STEP: CSS files
@@ -101,7 +102,7 @@ module.exports = function(options, paths) {
   gulp.task('fonts', function () {
     return gulp.src([
       paths.fonts + '/**/*'
-    ].concat($.mainBowerFiles()))
+    ].concat(mainBowerFiles()))
       .pipe($.filter('**/*.{eot,svg,ttf,woff,woff2}'))
       .pipe($.flatten())
       .pipe(gulp.dest(paths.tmpDistFonts + '/'));
@@ -132,7 +133,7 @@ module.exports = function(options, paths) {
 
 
   gulp.task('clean', function (done) {
-    $.del([paths.dist + '/', paths.tmp + '/'], done);
+    del([paths.dist + '/', paths.tmp + '/'], done);
   });
 
   gulp.task('build', ['rev']);

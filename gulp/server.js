@@ -4,8 +4,6 @@ var gulp = require('gulp');
 var browserSync = require('browser-sync');
 var browserSyncSpa = require('browser-sync-spa');
 
-var util = require('util');
-
 var middleware = require('./proxy');
 
 module.exports = function(options, paths) {
@@ -13,8 +11,9 @@ module.exports = function(options, paths) {
   function browserSyncInit(baseDir, browser) {
     browser = browser === undefined ? 'default' : browser;
 
-    var routes = null;
-    if(baseDir === paths.src || (util.isArray(baseDir) && baseDir.indexOf(paths.src) !== -1)) {
+    var routes;
+    // if src path is in the baseDir(s) provided, add /bower_components as a route
+    if(baseDir === paths.src || (Array.isArray(baseDir) && baseDir.indexOf(paths.src) !== -1)) {
       routes = {
         '/bower_components': 'bower_components'
       };
