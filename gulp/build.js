@@ -11,7 +11,7 @@ var uglifySaveLicense = require('uglify-save-license');
 
 module.exports = function(options, paths) {
   // If you want an html partial/template/view to be templatecached, make sure it ends with '.template.html' (e.g. 'someDirective.template.html'). Otherwise, it will be copied and minified in the 'dist' task. Be sure to point to the correct template file path in your directive templateUrl.
-  gulp.task('partials', function () {
+  gulp.task('templates', function () {
     return gulp.src([
       paths.src + '/**/*.template.html'
     ])
@@ -20,19 +20,19 @@ module.exports = function(options, paths) {
         spare: true,
         quotes: true
       }))
-      .pipe($.debug({title: 'PARTIALS TO BE TEMPLATECACHED:'}))
+      .pipe($.debug({title: 'TEMPLATES TO BE TEMPLATECACHED:'}))
       .pipe($.angularTemplatecache('templateCacheHtml.js', {
         // module name is same as appName by default - this can be changed of course if your module name differs from appName
         module: options.appName
       }))
-      .pipe(gulp.dest(paths.tmpPartials + '/'));
+      .pipe(gulp.dest(paths.tmpTemplates + '/'));
   });
 
-  gulp.task('dist', ['inject', 'partials'], function () {
-    var partialsInjectFile = gulp.src(paths.tmpPartials + '/templateCacheHtml.js', { read: false });
-    var partialsInjectOptions = {
-      starttag: '<!-- inject:partials -->',
-      ignorePath: paths.tmpPartials + '/',
+  gulp.task('dist', ['inject', 'templates'], function () {
+    var templatesInjectFile = gulp.src(paths.tmpTemplates + '/templateCacheHtml.js', { read: false });
+    var templatesInjectOptions = {
+      starttag: '<!-- inject:templates -->',
+      ignorePath: paths.tmpTemplates + '/',
       addRootSlash: false
     };
 
@@ -47,7 +47,7 @@ module.exports = function(options, paths) {
         paths.tmpServe + '/index.html',
         // and all html files in src directory
         paths.src + '/**/*.html',
-        // ignore all template files, since they get put in templatecache by the 'partials' task
+        // ignore all template files, since they get put in templatecache by the 'templates' task
         '!' + paths.src + '/**/*.template.html',
         // ignore the src index.html since we already have the tmp one
         '!' + paths.src + '/index.html'
@@ -57,7 +57,7 @@ module.exports = function(options, paths) {
       .pipe(indexHtmlFilter)
       // .pipe($.debug({title: 'JUST INDEX.HTML:'}))
       // inject the templateCacheHtml.js file into index.html
-      .pipe($.inject(partialsInjectFile, partialsInjectOptions))
+      .pipe($.inject(templatesInjectFile, templatesInjectOptions))
       // concat the js and css files in the build blocks of index.html and add the resulting files to the stream
       .pipe(assets = $.useref.assets())
       // .pipe($.debug({title: 'AFTER useref.assets():'}))

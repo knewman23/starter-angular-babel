@@ -26,7 +26,7 @@ var paths = {
   images: 'src/images',
   fonts: 'src/fonts',
   tmp: '.tmp',
-  tmpPartials: '.tmp/partials',
+  tmpTemplates: '.tmp/templates',
   tmpStyles: '.tmp/styles',
   tmpServe: '.tmp/serve',
   tmpDist: '.tmp/dist',
@@ -36,6 +36,7 @@ var paths = {
   tmpDistFonts: '.tmp/dist/fonts',
   dist: 'dist',
   e2e: 'e2e',
+  // generator templates
   templates: 'templates'
 };
 
