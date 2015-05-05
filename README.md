@@ -17,7 +17,7 @@ starter-angular-babel was built by running [generator-gulp-angular][generator-gu
 
 ## Does it matter where I put my files?
 Yes - to benefit from the fractal approach, you will need to separate your application into pages and components. Each top-level folder under the `src` directory has a purpose.
-- `components`: Any component shared between more than one page/component should live here in its own folder. Feel free to nest components if it makes sense (i.e. component1 dependent on another component2, and component2 is only used by component1)
+- `components`: Any component shared between more than one page/component should live here in its own folder. Feel free to nest components if it makes sense (e.g. component1 dependent on another component2, and component2 is only used by component1)
 - `pages`: Every page gets its own folder here. As with components, feel free to nest other pages or components in a page folder if it makes sense.
 - `services`, `filters`: Other shared files should be split up according to type in the `src` folder at the same level as the `pages` and `components` folders. If a file of any type is only used by one thing, then it is not shared and should be co-located with that thing.
 
@@ -28,7 +28,7 @@ These are just conventions that have worked well for me - feel free to tweak the
 ## How do I write Angular 1.x in ES6?
 This project comes with example controllers, directives, and services, so you can get a feel for how you could write them.
 
-You don't have to use classes - you can continue to use the same functions you did before, and just use the module loader and whatever ES6 goodness you want (i.e. generators). Classes work well for Angular 1.x controllers and services, and not so well for other things. See [this article][exploring-es6-angular] for some examples and explanation.
+You don't have to use classes - you can continue to use the same functions you did before, and just use the module loader and whatever ES6 goodness you want (e.g. generators). Classes work well for Angular 1.x controllers and services, and not so well for other things. See [this article][exploring-es6-angular] for some examples and explanation.
 
 
 

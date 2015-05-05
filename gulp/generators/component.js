@@ -23,10 +23,10 @@ module.exports = function(options, paths) {
         'For example:',
         'To generate a page named "fancy-page":',
         '  gulp component -n fancy-page -t page',
-        'To generate a directive component named "fancy-component" (comes with directive, template html, scss, and test files):',
-        '  gulp component -n fancy-component -t directive',
-        'To generate an include component named "fancy-component" (comes with controller, include html, scss, and test files):',
-        '  gulp component -n fancy-component -t include'
+        'To generate a directive component named "fancy-directive" (comes with directive, template html, scss, and test files):',
+        '  gulp component -n fancy-directive -t directive',
+        'To generate an include component named "fancy-include" (comes with controller, include html, scss, and test files):',
+        '  gulp component -n fancy-include -t include'
       ].join('\n'));
       return;
     }
