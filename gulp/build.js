@@ -94,8 +94,8 @@ module.exports = function(options, paths) {
       // STEP: Write everything to dist folder
       // .pipe($.debug({title: 'DIST FILES:'}))
       .pipe(gulp.dest(paths.tmpDist + '/'))
-      // show some stats about the size of your project
-      .pipe( $.size({ title: paths.tmpDist + '/', showFiles: true }) );
+      // show stats about the size of the HTML, JS, CSS files in your project
+      .pipe( $.size({ title: 'SIZE: ', showFiles: true }) )
   });
 
   // Fonts from bower dependencies and custom ones from this app
@@ -127,7 +127,10 @@ module.exports = function(options, paths) {
   gulp.task('rev', ['dist', 'fonts', 'images'], function() {
     return gulp.src(paths.tmpDist + '/**/*')
       .pipe(revAll.revision())
-      .pipe(gulp.dest(paths.dist + '/')) //write revisioned files to dist
+      // write revisioned files to dist
+      .pipe(gulp.dest(paths.dist + '/'))
+      // show stats about the size of ALL files in your project
+      // .pipe( $.size({ title: 'SIZE: ', showFiles: true }) )
       .pipe(revAll.manifestFile())
       .pipe(gulp.dest(paths.dist + '/')); //write rev manifest to dist
   });
