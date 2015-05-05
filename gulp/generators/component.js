@@ -65,9 +65,6 @@ module.exports = function(options, paths) {
       };
     }
 
-    // convert name to camelCase
-    var cameledName = _.camelCase(name);
-
     // create new filenames
     var newFilenames;
     if(type === 'page' || type === 'include') {
@@ -98,7 +95,7 @@ module.exports = function(options, paths) {
 
     // console.log([
     //     name,
-    //     cameledName,
+    //     _.camelCase(name),
     //     _.map(templateFilenames, function(d) { return d; }),
     //     _.map(newFilenames, function(d) { return d; }),
     //     folderPath
@@ -116,7 +113,8 @@ module.exports = function(options, paths) {
       .pipe($.template({
         'appName': options.appName,
         'name': name,
-        'cameledName': cameledName,
+        'cameledName': _.camelCase(name),
+        'PascaledName': _.capitalize( _.camelCase(name) ),
         'type': type,
         'htmlFilename': newFilenames.html
       }))
