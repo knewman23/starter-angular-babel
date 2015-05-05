@@ -10,7 +10,7 @@ var mainBowerFiles = require('main-bower-files');
 var uglifySaveLicense = require('uglify-save-license');
 
 module.exports = function(options, paths) {
-  // If you want an html partial/template/view to be templatecached, make sure it ends with '.template.html' (e.g. 'someDirective.template.html'). Otherwise, it will be copied and minified in the html task. Be sure to point to the correct template file path in your directive templateUrl.
+  // If you want an html partial/template/view to be templatecached, make sure it ends with '.template.html' (e.g. 'someDirective.template.html'). Otherwise, it will be copied and minified in the 'dist' task. Be sure to point to the correct template file path in your directive templateUrl.
   gulp.task('partials', function () {
     return gulp.src([
       paths.src + '/**/*.template.html'
@@ -73,7 +73,7 @@ module.exports = function(options, paths) {
       .pipe(cssFilter)
       // .pipe($.debug({title: 'CSS FILES:'}))
       // replace the font paths with the path to the font folder in the dist folder
-      .pipe($.replace('../../bower_components/bootstrap-sass/assets/fonts/bootstrap/', '../assets/fonts/'))
+      .pipe($.replace('../../bower_components/bootstrap-sass/assets/fonts/bootstrap/', '../fonts/'))
       .pipe($.minifyCss())
       .pipe(cssFilter.restore())
       .pipe(assets.restore())
@@ -117,8 +117,9 @@ module.exports = function(options, paths) {
   });
 
 
-  // Setup gulp-rev-all, stop it from renaming index.html and favicon.ico
+  // setup gulp-rev-all
   var revAll = new $.revAll({
+    // stop it from renaming index.html and favicon.ico
     dontRenameFile: [/^\/favicon.ico$/g, /^\/index.html/g]
   });
 

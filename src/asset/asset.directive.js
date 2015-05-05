@@ -10,7 +10,7 @@ function asset() {
   }
 
   return {
-    templateUrl: 'components/asset/asset.template.html',
+    templateUrl: 'asset/asset.template.html',
     restrict: 'E',
     scope: {
       asset: '='

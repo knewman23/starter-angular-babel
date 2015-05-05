@@ -22,12 +22,9 @@ var options = {
 
 var paths = {
   src: 'src',
-  pages: 'src/pages',
-  components: 'src/components',
   styles: 'src/styles',
-  assets: 'src/assets',
-  images: 'src/assets/images',
-  fonts: 'src/assets/fonts',
+  images: 'src/images',
+  fonts: 'src/fonts',
   tmp: '.tmp',
   tmpPartials: '.tmp/partials',
   tmpStyles: '.tmp/styles',
@@ -35,9 +32,8 @@ var paths = {
   tmpDist: '.tmp/dist',
   tmpDistScripts: '.tmp/dist/scripts',
   tmpDistStyles: '.tmp/dist/styles',
-  tmpDistAssets: '.tmp/dist/assets',
-  tmpDistImages: '.tmp/dist/assets/images',
-  tmpDistFonts: '.tmp/dist/assets/fonts',
+  tmpDistImages: '.tmp/dist/images',
+  tmpDistFonts: '.tmp/dist/fonts',
   dist: 'dist',
   e2e: 'e2e',
   templates: 'templates'

@@ -1,9 +1,9 @@
 'use strict';
 
 import userService from './services/user.service';
-import assetsService from './pages/home/assets.service';
-import Home from './pages/home/home.controller';
-import asset from './components/asset/asset.directive';
+import assetsService from './home/assets.service';
+import Home from './home/home.controller';
+import asset from './asset/asset.directive';
 
 (function () {
 
@@ -14,7 +14,7 @@ import asset from './components/asset/asset.directive';
     $stateProvider
       .state('home', {
         url: '/',
-        templateUrl: 'pages/home/home.html',
+        templateUrl: 'home/home.html',
         controller: 'Home',
         controllerAs: 'vm'
       });
