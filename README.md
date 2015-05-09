@@ -5,6 +5,26 @@ starter-angular-babel follows the fractal hierarchy approach [recommended by Goo
 
 
 
+## Quickstart
+Using this starter repo for a new project is simple.
+1. Clone this repo
+  ```
+  git clone https://github.com/vbud/starter-angular-babel.git
+  ```
+2. Do a project-wide rename of 'starter-angular-babel' and 'starterAngularBabel' to the name of your project.
+3. Install dependencies.
+  ```
+  bower install && npm install
+  ```
+4. Serve the project. The scaffolded home page open up in a browser tab.
+  ```
+  gulp serve
+  ```
+
+That's it!
+
+
+
 ## What was this starter built with?
 starter-angular-babel was built by running [generator-gulp-angular][generator-gulp-angular] with the following choices:
 - [Babel][babel] for using ES6/ES2015
@@ -25,10 +45,8 @@ This project comes with example controllers, directives, and services, so you ca
 
 
 
-## Debugging is different - where are my source files?
-You can still debug as usual in devtools - you just need to open up the webpack tree in your debugger to see your source files. This is achieved by using sourcemaps.
-
-You'll also notice that you can see your source SCSS files in the debugger too. This is also thanks to sourcemaps. Pretty cool!
+## Where are my source JavaScript files in by browser's dev tools?
+Debugging JavaScript is different since Babel transpiles everything. Luckily you can still debug as usual in devtools - you just need to open up the webpack tree in your debugger to see your source JavaScript files. This is achieved by using sourcemaps.
 
 
 
