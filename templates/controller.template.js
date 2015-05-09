@@ -6,13 +6,11 @@
  * @description
  */
 
-class <%= PascaledName %> {
-  /* @ngInject */
-  constructor () {
+/* @ngInject */
+function <%= PascaledName %>() {
 
-    var vm = this;
+  var vm = this;
 
-  }
 }
 
 export default <%= PascaledName %>;

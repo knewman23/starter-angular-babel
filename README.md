@@ -1,7 +1,7 @@
 # starter-angular-babel
 Want to build a single-page application using [Angular][angular] and ES6/ES2015? Then this starter is for you!
 
-starter-angular-babel follows the fractal hierarchy approach [recommended by Google for AngularJS applications][google-recommendations].
+starter-angular-babel follows the fractal hierarchy approach [recommended by Google for AngularJS applications][google-recommendations]. This approach plays nicely with the Folders-by-Feature approach [advocated by John Papa in his style guide][papa-folders-by-feature].
 
 
 
@@ -15,20 +15,8 @@ starter-angular-babel was built by running [generator-gulp-angular][generator-gu
 
 
 
-## Does it matter where I put my files?
-Yes - to benefit from the fractal approach, you will need to separate your application into pages and components. Each top-level folder under the `src` directory has a purpose.
-- `components`: Any component shared between more than one page/component should live here in its own folder. Feel free to nest components if it makes sense (e.g. component1 dependent on another component2, and component2 is only used by component1)
-- `pages`: Every page gets its own folder here. As with components, feel free to nest other pages or components in a page folder if it makes sense.
-- `services`, `filters`: Other shared files should be split up according to type in the `src` folder at the same level as the `pages` and `components` folders. If a file of any type is only used by one thing, then it is not shared and should be co-located with that thing.
-
-These are just conventions that have worked well for me - feel free to tweak them.
-
-
-
 ## How do I write Angular 1.x in ES6?
-This project comes with example controllers, directives, and services, so you can get a feel for how you could write them.
-
-You don't have to use classes - you can continue to use the same functions you did before, and just use the module loader and whatever ES6 goodness you want (e.g. generators). Classes work well for Angular 1.x controllers and services, and not so well for other things. See [this article][exploring-es6-angular] for some examples and explanation.
+This project comes with example controllers, directives, and services, so you can get a feel for how you could write them. Note that ES6 classes really only work well for Angular 1.x controllers and services, and not so well for other things. See [this article][exploring-es6-angular] for some more examples and explanation.
 
 
 
@@ -49,13 +37,6 @@ To see how this starter has evolved over time, read the [Changelog](CHANGELOG.md
 
 
 
-## TODO
-- sourcemaps in production? (will require a refactor, as dev scripts.js/styles.js tasks are not used in build.js, so build.js can't currently see the source, as it builds from what is already in .tmp folder)
-- in the gulp build task, handle image references in dependencies better (don't change the folder structure, just bring them in with their existing structure?) 
-- move to gulp 4.0 once it gets released
-
-
-
 # License
 [MIT License](http://en.wikipedia.org/wiki/MIT_License)
 
@@ -69,3 +50,4 @@ To see how this starter has evolved over time, read the [Changelog](CHANGELOG.md
 [libsass]: https://github.com/hcatlin/libsass
 [exploring-es6-angular]: http://www.michaelbromley.co.uk/blog/350/exploring-es6-classes-in-angularjs-1-x
 [google-recommendations]: http://goo.gl/DQtY4y
+[papa-folders-by-feature]: https://github.com/johnpapa/angular-styleguide#folders-by-feature-structure
