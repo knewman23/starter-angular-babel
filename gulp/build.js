@@ -103,7 +103,7 @@ module.exports = function(options, paths) {
     return gulp.src([
       paths.fonts + '/**/*'
     ].concat(mainBowerFiles()))
-      .pipe($.filter('**/*.{eot,svg,ttf,woff,woff2}'))
+      .pipe($.filter('**/*.{eot,ttf,woff,woff2}'))
       .pipe($.flatten())
       .pipe(gulp.dest(paths.tmpDistFonts + '/'));
   });
