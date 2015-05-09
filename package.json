@@ -1,5 +1,5 @@
 {
-  "name": "starterAngularBabel",
+  "name": "starter-angular-babel",
   "scripts": {
     "test": "gulp test"
   },
