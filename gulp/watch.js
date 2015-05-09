@@ -3,10 +3,6 @@
 var gulp = require('gulp');
 var browserSync = require('browser-sync');
 
-function isOnlyChange(event) {
-  return event.type === 'changed';
-}
-
 module.exports = function(options, paths) {
   gulp.task('watch', ['scripts:watch', 'inject'], function () {
 
@@ -16,9 +12,14 @@ module.exports = function(options, paths) {
       paths.src + '/**/*.css',
       paths.src + '/**/*.scss'
     ], function(event) {
-      if(isOnlyChange(event)) {
+      if(event.type === 'changed') {
+        console.log('SCSS file changed.')
         gulp.start('styles');
-      } else {
+      } else if(event.type === 'added') {
+        console.log('SCSS file added.')
+        gulp.start('inject');
+      } else if(event.type === 'deleted') {
+        console.log('SCSS file deleted.')
         gulp.start('inject');
       }
     });
