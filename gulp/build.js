@@ -15,12 +15,13 @@ module.exports = function(options, paths) {
     return gulp.src([
       paths.src + '/**/*.template.html'
     ])
+      .pipe($.debug({title: 'TEMPLATES TO BE TEMPLATECACHED:'}))
       .pipe($.minifyHtml({
         empty: true,
         spare: true,
-        quotes: true
+        quotes: true,
+        conditionals: true
       }))
-      .pipe($.debug({title: 'TEMPLATES TO BE TEMPLATECACHED:'}))
       .pipe($.angularTemplatecache('templateCacheHtml.js', {
         // module name is same as appName by default - this can be changed of course if your module name differs from appName
         module: options.appName
