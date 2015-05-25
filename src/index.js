@@ -10,4 +10,4 @@ import './config';
 import './services/user.factory';
 import './home/assets.factory';
 import './home/home.controller';
-import './asset/asset.directive';
+import './bundledAsset/bundledAsset.directive';
