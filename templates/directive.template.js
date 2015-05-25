@@ -22,4 +22,4 @@ function <%= cameledName %>() {
   };
 }
 
-export default <%= cameledName %>;
+angular.module('<%= appName %>').directive('<%= cameledName %>', <%= cameledName %>);

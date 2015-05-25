@@ -13,4 +13,4 @@ function <%= PascaledName %>() {
 
 }
 
-export default <%= PascaledName %>;
+angular.module('<%= appName %>').controller('<%= PascaledName %>', <%= PascaledName %>);
