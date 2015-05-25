@@ -11,4 +11,4 @@ class Home {
   }
 }
 
-export default Home;
+angular.module('starterAngularBabel').controller('Home', Home);

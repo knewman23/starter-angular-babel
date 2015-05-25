@@ -16,4 +16,4 @@ function config($stateProvider, $urlRouterProvider) {
 
 }
 
-export default config;
+angular.module('starterAngularBabel').config(config);

@@ -14,4 +14,4 @@ function userService() {
   };
 }
 
-export default userService;
+angular.module('starterAngularBabel').factory('userService', userService);

@@ -19,4 +19,4 @@ function asset() {
   };
 }
 
-export default asset;
+angular.module('starterAngularBabel').directive('asset', asset);

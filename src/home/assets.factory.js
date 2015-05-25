@@ -80,4 +80,4 @@ function assetsService() {
   };
 }
 
-export default assetsService;
+angular.module('starterAngularBabel').factory('assetsService', assetsService);
