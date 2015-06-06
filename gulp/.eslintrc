@@ -1,0 +1,10 @@
+{
+  "env": {
+    "node": true
+  },
+  "rules": {
+    "strict": [2, "global"],
+    "quotes": "single",
+    "indent": [2, 2]
+  }
+}

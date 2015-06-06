@@ -1,0 +1,18 @@
+{
+  "parser": "babel-eslint",
+  "env": {
+    "browser": true
+  },
+  "globals": {
+    "angular": false,
+    "_": false
+  },
+  "rules": {
+    "global-strict": [2, "always"],
+    "strict": [2, "global"],
+    "quotes": "single",
+    "indent": [2, 2],
+    "no-trailing-spaces": 2,
+    "camelcase": true
+  }
+}

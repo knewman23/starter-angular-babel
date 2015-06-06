@@ -10,7 +10,8 @@ module.exports = function(options, paths) {
     var webpackOptions = {
       watch: watch,
       module: {
-        preLoaders: [{ test: /\.js$/, exclude: /node_modules/, loader: 'jshint-loader'}],
+        preLoaders: [{ test: /\.js$/, exclude: /node_modules/, loader: 'eslint-loader'}],
+        // preLoaders: [{ test: /\.js$/, exclude: /node_modules/, loader: 'jshint-loader'}],
         loaders: [{ test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader'}]
       },
       output: { filename: 'index.js' }
