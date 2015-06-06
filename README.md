@@ -47,7 +47,7 @@ This project comes with example controllers, directives, and services, so you ca
 
 
 
-## Where are my source JavaScript files in by browser's dev tools?
+## Where are the source JavaScript files in the browser's dev tools?
 Debugging JavaScript is different since Babel transpiles everything. Luckily you can still debug as usual in devtools - you just need to open up the webpack tree in your debugger to see your source JavaScript files. This is achieved by using sourcemaps.
 
 
