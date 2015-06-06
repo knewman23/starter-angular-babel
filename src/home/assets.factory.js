@@ -59,7 +59,7 @@ function assetsService() {
       'logo': 'images/node-sass.png'
     },
     {
-      'title': 'Babel (formerly 6to5)',
+      'title': 'Babel',
       'url': 'https://babeljs.io/',
       'description': 'Turns ES6+ code into vanilla ES5, so you can use next generation features today.',
       'logo': 'images/babel.png'
