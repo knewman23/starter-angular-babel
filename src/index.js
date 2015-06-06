@@ -1,11 +1,6 @@
 'use strict';
 
-angular.module('starterAngularBabel', [
-  'ngSanitize',
-  'ui.router',
-  'ui.bootstrap'
-]);
-
+import './module.js';
 import './config';
 import './services/user.factory';
 import './home/assets.factory';
