@@ -4,8 +4,6 @@ var gulp = require('gulp');
 var browserSync = require('browser-sync');
 var browserSyncSpa = require('browser-sync-spa');
 
-var middleware = require('./proxy');
-
 module.exports = function(options, paths) {
 
   function browserSyncInit(baseDir, browser) {
@@ -23,10 +21,6 @@ module.exports = function(options, paths) {
       baseDir: baseDir,
       routes: routes
     };
-
-    if(middleware.length > 0) {
-      server.middleware = middleware;
-    }
 
     browserSync.instance = browserSync.init({
       startPath: '/',
