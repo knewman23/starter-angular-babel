@@ -1,3 +1,5 @@
+[![Dependency Status][david-image]][david-url]
+
 # starter-angular-babel
 Want to build a single-page application using [Angular][angular] and ES6/ES2015? Then this starter is for you!
 
@@ -69,3 +71,5 @@ To see how this starter has evolved over time, read the [Changelog](CHANGELOG.md
 [exploring-es6-angular]: http://www.michaelbromley.co.uk/blog/350/exploring-es6-classes-in-angularjs-1-x
 [google-recommendations]: http://goo.gl/DQtY4y
 [papa-folders-by-feature]: https://github.com/johnpapa/angular-styleguide#folders-by-feature-structure
+[david-image]: http://img.shields.io/david/koajs/cash.svg?style=flat-square
+[david-url]: https://david-dm.org/koajs/cash
