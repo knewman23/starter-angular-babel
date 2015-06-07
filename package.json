@@ -48,7 +48,8 @@
     "minimist": "^1.1.1",
     "protractor": "^2.1.0",
     "uglify-save-license": "^0.4.1",
-    "wiredep": "^2.2.0"
+    "wiredep": "^2.2.0",
+    "wrench": "^1.5.8"
   },
   "engines": {
     "node": ">=0.10.0"
