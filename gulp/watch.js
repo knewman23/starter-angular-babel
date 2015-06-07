@@ -5,44 +5,46 @@ var browserSync = require('browser-sync');
 
 var $ = require('gulp-load-plugins')();
 
-module.exports = function(options, paths) {
-  gulp.task('watch', ['scripts:watch', 'inject'], function () {
+var config = require('./config');
+var paths = config.paths;
 
-    gulp.watch([paths.src + '/*.html', 'bower.json'], ['inject']);
 
-    // function isAdded(file) {
-    //     return file.event === 'add';
-    // }
+gulp.task('watch', ['scripts:watch', 'inject'], function() {
 
-    // var filterAdded = $.filter(isAdded);
+  gulp.watch([paths.src + '/*.html', 'bower.json'], ['inject']);
 
-    //   gulp.src(paths.src + '/**/*.{css,scss}')
-    //     .pipe($.watch('/**/*.{css,scss}'))
-    //     .pipe(filterAdded)
-    //   ], function(event) {
-    //   if(event.type === 'changed') {
-    //     gulp.start('styles');
-    //   } else {
-    //     gulp.start('inject');
-    //   }
-    // });
+  // function isAdded(file) {
+  //     return file.event === 'add';
+  // }
 
-    $.watch([
-        paths.src + '/**/*.scss',
-        paths.src + '/**/*.css',
-      ], function(file) {
-        console.log(file.path);
-        gulp.start('inject');
-    });
+  // var filterAdded = $.filter(isAdded);
 
-    $.watch(paths.src + '/**/*.html', function(file) {
+  //   gulp.src(paths.src + '/**/*.{css,scss}')
+  //     .pipe($.watch('/**/*.{css,scss}'))
+  //     .pipe(filterAdded)
+  //   ], function(event) {
+  //   if(event.type === 'changed') {
+  //     gulp.start('styles');
+  //   } else {
+  //     gulp.start('inject');
+  //   }
+  // });
+
+  $.watch([
+      paths.src + '/**/*.scss',
+      paths.src + '/**/*.css',
+    ], function(file) {
       console.log(file.path);
-      browserSync.reload();
-      // browserSync.reload(event.path);
-    });
-
-    // gulp.watch(paths.src + '/**/*.html', function(event) {
-    //   browserSync.reload(event.path);
-    // });
+      gulp.start('inject');
   });
-};
+
+  $.watch(paths.src + '/**/*.html', function(file) {
+    console.log(file.path);
+    browserSync.reload();
+    // browserSync.reload(event.path);
+  });
+
+  // gulp.watch(paths.src + '/**/*.html', function(event) {
+  //   browserSync.reload(event.path);
+  // });
+});
