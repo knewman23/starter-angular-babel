@@ -1,10 +1,15 @@
 'use strict';
 
+var $ = {
+  util: require('gulp-util')
+};
+
+
 module.exports = {
   appName: 'starterAngularBabel',
   errorHandler: function(title) {
     return function(err) {
-      gutil.log(gutil.colors.red('[' + title + ']'), err.toString());
+      $.util.log($.util.colors.red('[' + title + ']'), err.toString());
       this.emit('end');
     };
   },
