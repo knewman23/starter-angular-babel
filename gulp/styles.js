@@ -15,7 +15,10 @@ var config = require('./config');
 var paths = config.paths;
 
 
-gulp.task('styles', function () {
+gulp.task('styles', compileScss);
+
+
+function compileScss() {
   var sassOptions = {
     includePaths: ['bower_components'],
     style: 'expanded'
@@ -65,5 +68,11 @@ gulp.task('styles', function () {
     // STEP: write the resulting compiled CSS to CSS files to be served
     .pipe(gulp.dest(paths.tmpServe + '/'))
     // trigger a browserSync reload
-    .pipe(browserSync.reload({ stream: true }));
-});
+    // .pipe(browserSync.reload({ stream: true }));
+    .pipe(browserSync.stream());
+}
+
+
+module.exports = {
+  compileScss: compileScss
+};

@@ -13,14 +13,11 @@ var paths = config.paths;
 
 gulp.task('inject', ['scripts', 'styles'], function () {
   var injectStyles = gulp.src([
-    paths.tmpServe + '/**/*.css',
-    '!' + paths.tmpServe + '/dependencies.css'
+    paths.tmpServe + '/**/*.css'
   ], { read: false });
 
   var injectScripts = gulp.src([
-    paths.tmpServe + '/**/*.js',
-    '!' + paths.src + '/**/*.spec.js',
-    '!' + paths.src + '/**/*.mock.js'
+    paths.tmpServe + '/**/*.js'
   ], { read: false });
 
   var injectOptions = {
