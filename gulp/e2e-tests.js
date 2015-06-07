@@ -1,8 +1,9 @@
 'use strict';
 
 var gulp = require('gulp');
-
-var $ = require('gulp-load-plugins')();
+var $ = {
+  protractor: require('gulp-protractor')
+};
 
 var browserSync = require('browser-sync');
 

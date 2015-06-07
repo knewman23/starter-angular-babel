@@ -1,8 +1,9 @@
 'use strict';
 
 var gulp = require('gulp');
-
-var $ = require('gulp-load-plugins')();
+var $ = {
+  inject: require('gulp-inject')
+};
 
 var wiredep = require('wiredep').stream;
 

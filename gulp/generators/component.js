@@ -1,7 +1,12 @@
 'use strict';
 
 var gulp = require('gulp');
-var $ = require('gulp-load-plugins')();
+var $ = {
+  filter: require('gulp-filter'),
+  template: require('gulp-template'),
+  rename: require('gulp-rename'),
+  debug: require('gulp-debug')
+};
 
 var _ = require('lodash');
 var chalk = require('chalk');

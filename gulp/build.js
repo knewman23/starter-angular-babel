@@ -1,10 +1,24 @@
 'use strict';
 
 var gulp = require('gulp');
+var $ = {
+  minifyHtml: require('gulp-minify-html'),
+  minifyCss: require('gulp-minify-css'),
+  angularTemplatecache: require('gulp-angular-templatecache'),
+  ngAnnotate: require('gulp-ng-annotate'),
+  filter: require('gulp-filter'),
+  flatten: require('gulp-flatten'),
+  inject: require('gulp-inject'),
+  replace: require('gulp-replace'),
+  useref: require('gulp-useref'),
+  uglify: require('gulp-uglify'),
+  revAll: require('gulp-rev-all'),
+  size: require('gulp-size'),
+  debug: require('gulp-debug')
+};
 
 var _ = require('lodash');
 
-var $ = require('gulp-load-plugins')();
 var del = require('del');
 var mainBowerFiles = require('main-bower-files');
 var uglifySaveLicense = require('uglify-save-license');
@@ -124,7 +138,8 @@ gulp.task('images', function () {
 // setup gulp-rev-all
 var revAll = new $.revAll({
   // stop it from renaming index.html and favicon.ico
-  dontRenameFile: [/^\/favicon.ico$/g, /^\/index.html/g]
+  dontRenameFile: ['favicon.ico', 'index.html'],
+  dontSearchFile: ['vendor.js']
 });
 
 // Revision all the things in tmp dist directory and write to final dist location
@@ -133,8 +148,8 @@ gulp.task('rev', ['dist', 'fonts', 'images'], function() {
     .pipe(revAll.revision())
     // write revisioned files to dist
     .pipe(gulp.dest(paths.dist + '/'))
-    // show stats about the size of ALL files in your project
-    // .pipe( $.size({ title: 'SIZE: ', showFiles: true }) )
+    // show stats about the size of all minified files in your project
+    .pipe( $.size({title: 'MINIFIED SIZE: '}) )
     .pipe(revAll.manifestFile())
     .pipe(gulp.dest(paths.dist + '/')); //write rev manifest to dist
 });

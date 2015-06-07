@@ -1,10 +1,14 @@
 'use strict';
 
 var gulp = require('gulp');
+var $ = {
+  inject: require('gulp-inject'),
+  sourcemaps: require('gulp-sourcemaps'),
+  sass: require('gulp-sass'),
+  autoprefixer: require('gulp-autoprefixer')
+};
+
 var browserSync = require('browser-sync');
-
-var $ = require('gulp-load-plugins')();
-
 var wiredep = require('wiredep').stream;
 
 var config = require('./config');

@@ -1,9 +1,12 @@
 'use strict';
 
 var gulp = require('gulp');
-var browserSync = require('browser-sync');
+var $ = {
+  util: require('gulp-util'),
+  webpack: require('gulp-webpack')
+};
 
-var $ = require('gulp-load-plugins')();
+var browserSync = require('browser-sync');
 
 var config = require('./config');
 var paths = config.paths;

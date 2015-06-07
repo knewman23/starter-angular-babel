@@ -7,7 +7,6 @@ var wrench = require('wrench');
 wrench.readdirSyncRecursive('./gulp').filter(function(file) {
   return ( file !== 'config.js' && (/\.(js)$/i).test(file) );
 }).map(function(file) {
-  console.log(file);
   require('./gulp/' + file);
 });
 
