@@ -15,10 +15,10 @@ var config = require('./config');
 var paths = config.paths;
 
 
-gulp.task('styles', compileScss);
+gulp.task('styles', styles);
 
 
-function compileScss() {
+function styles() {
   var sassOptions = {
     includePaths: ['bower_components'],
     style: 'expanded'
@@ -74,5 +74,5 @@ function compileScss() {
 
 
 module.exports = {
-  compileScss: compileScss
+  styles: styles
 };
