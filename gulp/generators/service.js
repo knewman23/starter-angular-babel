@@ -5,7 +5,7 @@ var gulp = require('gulp');
 var chalk = require('chalk');
 var argv = require('minimist')(process.argv);
 
-var config = require('./config');
+var config = require('../config');
 var paths = config.paths;
 
 
