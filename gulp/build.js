@@ -27,7 +27,7 @@ var config = require('./config');
 var paths = config.paths;
 
 
-// If you want an html partial/template/view to be templatecached, make sure it ends with '.template.html' (e.g. 'someDirective.template.html'). Otherwise, it will be copied and minified in the 'dist' task. Be sure to point to the correct template file path in your directive templateUrl.
+// If you want an html partial/template/view to be templatecached, make sure it ends with '.template.html' (e.g. 'someDirective.template.html'). Otherwise, it will be copied and minified in the 'dist' task.
 gulp.task('templates', function () {
   return gulp.src([
     paths.src + '/**/*.template.html'
