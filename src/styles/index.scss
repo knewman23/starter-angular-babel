@@ -10,17 +10,8 @@ $icon-font-path: "../../bower_components/bootstrap-sass/assets/fonts/bootstrap/"
 // NOTE: We could do the above with wiredep, but it can be cumbersome, as it will inject all scss files in the main property of all your bower dependencies. This can cause dependencies of your dependencies to get injected, which can mess with the order of your imports and re-import things multiple times. Be sure to also make the required changes in gulp/styles.js and gulpfile.js in order to re-enable wiredep.
 
 
-
 //===== Application SCSS partials
 
 /* Do not remove the below comments. They are the placeholders used by gulp-inject to inject all your scss files automatically */
 // injector
 // endinjector
-
-
-
-//===== Shared styles
-
-.navbar {
-  margin-bottom: 0;
-}
