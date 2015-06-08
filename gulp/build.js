@@ -46,7 +46,7 @@ gulp.task('templates', function () {
     .pipe(gulp.dest(paths.tmpTemplates + '/'));
 });
 
-gulp.task('dist', ['html', 'styles', 'scripts', 'templates'], function () {
+gulp.task('dist', function () {
   var templatesInjectFile = gulp.src(paths.tmpTemplates + '/templateCacheHtml.js', { read: false });
   var templatesInjectOptions = {
     starttag: '<!-- inject:templates -->',
@@ -143,7 +143,7 @@ var revAll = new $.revAll({
 });
 
 // Revision all the things in tmp dist directory and write to final dist location
-gulp.task('rev', ['dist', 'fonts', 'images'], function() {
+gulp.task('rev', function() {
   return gulp.src(paths.tmpDist + '/**/*')
     .pipe(revAll.revision())
     // write revisioned files to dist
@@ -157,6 +157,8 @@ gulp.task('rev', ['dist', 'fonts', 'images'], function() {
 gulp.task('build', function() {
   $.sequence(
     'clean',
+    ['html', 'styles', 'scripts', 'templates', 'fonts', 'images'],
+    'dist',
     'rev'
   );
 });
