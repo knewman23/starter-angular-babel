@@ -18,19 +18,10 @@ Ideas and code were borrowed from the [generator-gulp-angular][generator-gulp-an
 
 ## Quickstart
 Using this starter repo for a new project is simple.
-1. Clone this repo
-  ```
-  git clone https://github.com/vbud/starter-angular-babel.git
-  ```
-2. Do a project-wide rename of 'starter-angular-babel' and 'starterAngularBabel' to the name of your project.
-3. Install dependencies.
-  ```
-  bower install && npm install
-  ```
-4. Serve the project. The scaffolded home page open up in a browser tab.
-  ```
-  gulp serve
-  ```
+1. Clone this repo.
+2. Give your project a name with `gulp rename-project yourProjectName`.
+3. Install dependencies with `npm install && bower install`.
+4. Serve your project with `gulp serve`.
 
 That's it!
 
@@ -41,13 +32,8 @@ This project comes with example controllers, directives, and services, so you ca
 
 
 
-## How do I use this for a project?
-`git clone` this repository and do a project-wide replace of the string 'starterAngularBabel'.
-
-
-
-## Where are the source JavaScript files in the browser's dev tools?
-Debugging JavaScript is different since Babel transpiles everything. Luckily you can still debug as usual in devtools - you just need to open up the webpack tree in your debugger to see your source JavaScript files. This is achieved by using sourcemaps.
+## How do I debug post-transpilation?
+Debugging JavaScript is different since Babel transpiles everything. Luckily you can still debug as usual in your developer tools - you just need to open up the webpack tree to see your source JavaScript files (sourcemaps make this possible).
 
 
 
