@@ -71,6 +71,4 @@ function styles() {
 }
 
 
-module.exports = {
-  styles: styles
-};
+module.exports = styles;

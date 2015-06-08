@@ -19,6 +19,4 @@ function html() {
 }
 
 
-module.exports = {
-  html: html
-};
+module.exports = html;

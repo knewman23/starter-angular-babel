@@ -11,8 +11,8 @@ var browserSync = require('browser-sync');
 var config = require('./config');
 var paths = config.paths;
 
-var styles = require('./styles').styles; // import styles task as a function
-var html = require('./html').html; // import html task as a function
+var styles = require('./styles'); // import styles task as a function
+var html = require('./html'); // import html task as a function
 
 
 gulp.task('watch', ['html', 'styles', 'scripts:watch'], function() {
