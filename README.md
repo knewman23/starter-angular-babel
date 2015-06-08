@@ -18,6 +18,7 @@ Ideas and code were borrowed from the [generator-gulp-angular][generator-gulp-an
 
 ## Quickstart
 Using this starter repo for a new project is simple.
+
 1. Clone this repo.
 2. Give your project a name with `gulp rename-project yourProjectName`.
 3. Install dependencies with `npm install && bower install`.
