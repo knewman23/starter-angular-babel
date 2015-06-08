@@ -54,7 +54,7 @@ gulp.task('scripts', function () {
   return scripts();
 });
 
-gulp.task('scripts:watch', ['scripts'], function (callback) {
+gulp.task('scripts:watch', function (callback) {
   return scripts(true, callback);
 });
 
