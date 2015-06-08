@@ -43,7 +43,7 @@ gulp.task('templates', function () {
       // module name is same as appName by default - this can be changed of course if your module name differs from appName
       module: config.appName
     }))
-    .pipe(gulp.dest(paths.tmpTemplates + '/'));
+    .pipe(gulp.dest(paths.tmpTemplates));
 });
 
 gulp.task('dist', function () {
@@ -111,7 +111,7 @@ gulp.task('dist', function () {
 
     // STEP: Write everything to dist folder
     // .pipe($.debug({title: 'DIST FILES:'}))
-    .pipe(gulp.dest(paths.tmpDist + '/'))
+    .pipe(gulp.dest(paths.tmpDist))
     // show stats about the size of the HTML, JS, CSS files in your project
     .pipe( $.size({ title: 'SIZE: ', showFiles: true }) )
 });
@@ -119,19 +119,19 @@ gulp.task('dist', function () {
 // Fonts from bower dependencies and custom ones from this app
 gulp.task('fonts', function () {
   return gulp.src([
-    paths.fonts + '/**/*'
+    paths.src + '/fonts/*'
   ].concat(mainBowerFiles()))
     .pipe($.filter('**/*.{eot,ttf,woff,woff2}'))
     .pipe($.flatten())
-    .pipe(gulp.dest(paths.tmpDistFonts + '/'));
+    .pipe(gulp.dest(paths.tmpDist + '/fonts'));
 });
 
 gulp.task('images', function () {
   return gulp.src([
-    paths.images + '/**/*'
+    paths.src + '/**/*.{jpg,jpeg,tiff,gif,png,svg,ico}'
   ])
     // .pipe($.debug({title: 'SOURCE IMAGES:'}))
-    .pipe(gulp.dest(paths.tmpDistImages + '/'));
+    .pipe(gulp.dest(paths.tmpDist));
 });
 
 
@@ -151,7 +151,7 @@ gulp.task('rev', function() {
     // show stats about the size of all minified files in your project
     .pipe( $.size({title: 'MINIFIED SIZE: '}) )
     .pipe(revAll.manifestFile())
-    .pipe(gulp.dest(paths.dist + '/')); //write rev manifest to dist
+    .pipe(gulp.dest(paths.dist)); //write rev manifest to dist
 });
 
 gulp.task('build', function() {

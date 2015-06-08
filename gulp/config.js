@@ -22,7 +22,6 @@ module.exports = {
   paths: {
     src: 'src',
     styles: 'src/styles',
-    images: 'src/images',
     fonts: 'src/fonts',
     tmp: '.tmp',
     tmpTemplates: '.tmp/templates',
@@ -31,8 +30,6 @@ module.exports = {
     tmpDist: '.tmp/dist',
     tmpDistScripts: '.tmp/dist/scripts',
     tmpDistStyles: '.tmp/dist/styles',
-    tmpDistImages: '.tmp/dist/images',
-    tmpDistFonts: '.tmp/dist/fonts',
     dist: 'dist',
     e2e: 'e2e',
     // generator templates
