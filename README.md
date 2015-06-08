@@ -1,9 +1,18 @@
 [![Dependency Status][david-devdeps-image]][david-devdeps-url]
 
 # starter-angular-babel
-Want to build a single-page application using [Angular][angular] and ES6/ES2015? Then this starter is for you!
+Want to build a single-page application using [Angular 1.4][angular] and ES6/ES2015? Then this starter is for you!
 
 starter-angular-babel follows the fractal hierarchy approach [recommended by Google for AngularJS applications][google-recommendations]. This approach plays nicely with the Folders-by-Feature approach [advocated by John Papa in his style guide][papa-folders-by-feature].
+
+Libraries included:
+- [Babel][babel] enables ES6/7 features
+- [angular-bootstrap][angular-bootstrap] for jQuery-free UI components
+- [Angular UI router][ui-router] for improved routing until Angular's new router is released in 1.5
+- [node-sass][node-sass] for fast [libsass][libsass]-based CSS pre-processing
+- [gulp][gulp] for fast, streaming local development and builds
+
+Ideas and code were borrowed from the [generator-gulp-angular][generator-gulp-angular] project - so big thanks to them!
 
 
 
@@ -24,16 +33,6 @@ Using this starter repo for a new project is simple.
   ```
 
 That's it!
-
-
-
-## What was this starter built with?
-starter-angular-babel was built by running [generator-gulp-angular][generator-gulp-angular] with the following choices:
-- [Babel][babel] for using ES6/ES2015
-- [Angular 1.3][angular]
-- [angular-bootstrap][angular-bootstrap] for jQuery-free UI components
-- [Angular UI router][ui-router]
-- [node-sass][node-sass] for fast [libsass][libsass]-based CSS pre-processing
 
 
 
@@ -58,7 +57,7 @@ To see how this starter has evolved over time, read the [Changelog](CHANGELOG.md
 
 
 # License
-[MIT License](http://en.wikipedia.org/wiki/MIT_License)
+[MIT License][license]
 
 
 [generator-gulp-angular]: https://github.com/Swiip/generator-gulp-angular
@@ -68,8 +67,10 @@ To see how this starter has evolved over time, read the [Changelog](CHANGELOG.md
 [babel]: http://babeljs.io/
 [node-sass]: https://github.com/sass/node-sass
 [libsass]: https://github.com/hcatlin/libsass
+[gulp]: https://github.com/gulpjs/gulp
 [exploring-es6-angular]: http://www.michaelbromley.co.uk/blog/350/exploring-es6-classes-in-angularjs-1-x
 [google-recommendations]: http://goo.gl/DQtY4y
 [papa-folders-by-feature]: https://github.com/johnpapa/angular-styleguide#folders-by-feature-structure
 [david-devdeps-image]: https://david-dm.org/vbud/starter-angular-babel/dev-status.svg
 [david-devdeps-url]: https://david-dm.org/vbud/starter-angular-babel#info=devDependencies
+[license]: http://en.wikipedia.org/wiki/MIT_License
