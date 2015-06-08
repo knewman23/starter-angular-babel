@@ -59,6 +59,4 @@ gulp.task('scripts:watch', function (callback) {
 });
 
 
-module.exports = {
-  scripts: scripts
-};
+module.exports = scripts;
