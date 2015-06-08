@@ -1,6 +1,6 @@
 'use strict';
 
-import './module.js';
+import './module';
 import './config';
 import './services/user.factory';
 import './home/assets.factory';
