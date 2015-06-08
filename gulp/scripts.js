@@ -12,7 +12,8 @@ var config = require('./config');
 var paths = config.paths;
 
 
-function webpack(watch, callback) {
+function scripts(watch, callback) {
+  watch = watch || false;
   var webpackOptions = {
     watch: watch,
     module: {
@@ -49,9 +50,14 @@ function webpack(watch, callback) {
 }
 
 gulp.task('scripts', function () {
-  return webpack(false);
+  return scripts();
 });
 
 gulp.task('scripts:watch', ['scripts'], function (callback) {
-  return webpack(true, callback);
+  return scripts(true, callback);
 });
+
+
+module.exports = {
+  scripts: scripts
+};

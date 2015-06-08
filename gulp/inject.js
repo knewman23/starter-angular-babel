@@ -1,9 +1,6 @@
 'use strict';
 
 var gulp = require('gulp');
-var $ = {
-  inject: require('gulp-inject')
-};
 
 var wiredep = require('wiredep').stream;
 
@@ -11,23 +8,17 @@ var config = require('./config');
 var paths = config.paths;
 
 
-gulp.task('inject', ['scripts', 'styles'], function () {
-  var injectStyles = gulp.src([
-    paths.tmpServe + '/**/*.css'
-  ], { read: false });
+gulp.task('inject', inject);
 
-  var injectScripts = gulp.src([
-    paths.tmpServe + '/**/*.js'
-  ], { read: false });
 
-  var injectOptions = {
-    ignorePath: [paths.src, paths.tmpServe],
-    addRootSlash: false
-  };
-
-  return gulp.src(paths.src + '/*.html')
-    .pipe($.inject(injectStyles, injectOptions))
-    .pipe($.inject(injectScripts, injectOptions))
+// inject dependency scripts
+function inject() {
+  return gulp.src(paths.src + '/index.html')
     .pipe(wiredep(config.wiredep))
     .pipe(gulp.dest(paths.tmp + '/serve'));
-});
+}
+
+
+module.exports = {
+  inject: inject
+};

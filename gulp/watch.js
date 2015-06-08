@@ -11,40 +11,38 @@ var browserSync = require('browser-sync');
 var config = require('./config');
 var paths = config.paths;
 
+var styles = require('./styles').styles;
+var inject = require('./inject').inject;
 
-gulp.task('watch', ['scripts:watch', 'inject'], function() {
 
-  gulp.watch([paths.src + '/*.html', 'bower.json'], ['inject']);
+gulp.task('watch', ['scripts:watch', 'styles', 'inject'], function() {
 
-  // function isAdded(file) {
-  //     return file.event === 'add';
-  // }
-
-  // var filterAdded = $.filter(isAdded);
-
-  //   gulp.src(paths.src + '/**/*.{css,scss}')
-  //     .pipe($.watch('/**/*.{css,scss}'))
-  //     .pipe(filterAdded)
-  //   ], function(event) {
-  //   if(event.type === 'changed') {
-  //     gulp.start('styles');
-  //   } else {
-  //     gulp.start('inject');
-  //   }
-  // });
+  $.watch('bower.json', {
+      read: false,
+      name: 'watch: bower'
+    }, function(file) {
+    console.log(file.path);
+    inject();
+  });
 
   $.watch([
       paths.src + '/**/*.scss',
       paths.src + '/**/*.css',
-    ], function(file) {
+    ], {
+      read: false,
+      name: 'watch: SCSS/CSS'
+    }, function(file) {
       console.log(file.path);
-      gulp.start('inject');
+      styles()
+        .pipe(browserSync.stream());
   });
 
-  $.watch(paths.src + '/**/*.html', function(file) {
-    console.log(file.path);
-    browserSync.reload();
-    // browserSync.reload(event.path);
+  $.watch(paths.src + '/**/*.html', {
+      read: false,
+      name: 'watch: HTML'
+    }, function(file) {
+      console.log(file.path);
+      browserSync.reload();
   });
 
   // gulp.watch(paths.src + '/**/*.html', function(event) {

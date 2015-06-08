@@ -8,7 +8,6 @@ var $ = {
   autoprefixer: require('gulp-autoprefixer')
 };
 
-var browserSync = require('browser-sync');
 var wiredep = require('wiredep').stream;
 
 var config = require('./config');
@@ -66,10 +65,9 @@ function styles() {
     .pipe($.sourcemaps.write())
 
     // STEP: write the resulting compiled CSS to CSS files to be served
-    .pipe(gulp.dest(paths.tmpServe + '/'))
+    .pipe(gulp.dest(paths.tmpServe + '/'));
     // trigger a browserSync reload
     // .pipe(browserSync.reload({ stream: true }));
-    .pipe(browserSync.stream());
 }
 
 
