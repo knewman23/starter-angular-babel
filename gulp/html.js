@@ -8,17 +8,17 @@ var config = require('./config');
 var paths = config.paths;
 
 
-gulp.task('inject:bower', injectBower);
+gulp.task('html', html);
 
 
-// inject dependency scripts
-function injectBower() {
+function html() {
   return gulp.src(paths.src + '/index.html')
+    // inject dependency scripts with wiredep
     .pipe(wiredep(config.wiredep))
     .pipe(gulp.dest(paths.tmp + '/serve'));
 }
 
 
 module.exports = {
-  injectBower: injectBower
+  html: html
 };

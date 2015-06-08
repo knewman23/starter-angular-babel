@@ -14,6 +14,7 @@ var paths = config.paths;
 
 function scripts(watch, callback) {
   watch = watch || false;
+
   var webpackOptions = {
     watch: watch,
     module: {

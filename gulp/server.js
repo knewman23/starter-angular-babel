@@ -45,7 +45,7 @@ gulp.task('serve:dist', ['build'], function () {
   browserSyncInit(paths.dist);
 });
 
-gulp.task('serve:e2e', ['scripts:watch', 'styles', 'inject:bower'], function () {
+gulp.task('serve:e2e', ['html', 'styles', 'scripts:watch'], function () {
   browserSyncInit([paths.tmpServe, paths.src], []);
 });
 

@@ -2,6 +2,7 @@
 
 var gulp = require('gulp');
 var $ = {
+  sequence: require('run-sequence'),
   minifyHtml: require('gulp-minify-html'),
   minifyCss: require('gulp-minify-css'),
   angularTemplatecache: require('gulp-angular-templatecache'),
@@ -19,7 +20,6 @@ var $ = {
 
 var _ = require('lodash');
 
-var del = require('del');
 var mainBowerFiles = require('main-bower-files');
 var uglifySaveLicense = require('uglify-save-license');
 
@@ -46,7 +46,7 @@ gulp.task('templates', function () {
     .pipe(gulp.dest(paths.tmpTemplates + '/'));
 });
 
-gulp.task('dist', ['styles', 'scripts', 'templates'], function () {
+gulp.task('dist', ['html', 'styles', 'scripts', 'templates'], function () {
   var templatesInjectFile = gulp.src(paths.tmpTemplates + '/templateCacheHtml.js', { read: false });
   var templatesInjectOptions = {
     starttag: '<!-- inject:templates -->',
@@ -154,9 +154,9 @@ gulp.task('rev', ['dist', 'fonts', 'images'], function() {
     .pipe(gulp.dest(paths.dist + '/')); //write rev manifest to dist
 });
 
-
-gulp.task('clean', function (done) {
-  del([paths.dist + '/', paths.tmp + '/'], done);
+gulp.task('build', function() {
+  $.sequence(
+    'clean',
+    'rev'
+  );
 });
-
-gulp.task('build', ['rev']);
