@@ -46,7 +46,7 @@ gulp.task('templates', function () {
     .pipe(gulp.dest(paths.tmpTemplates + '/'));
 });
 
-gulp.task('dist', ['inject', 'templates'], function () {
+gulp.task('dist', ['styles', 'scripts', 'templates'], function () {
   var templatesInjectFile = gulp.src(paths.tmpTemplates + '/templateCacheHtml.js', { read: false });
   var templatesInjectOptions = {
     starttag: '<!-- inject:templates -->',

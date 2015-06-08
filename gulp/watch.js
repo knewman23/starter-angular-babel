@@ -12,17 +12,17 @@ var config = require('./config');
 var paths = config.paths;
 
 var styles = require('./styles').styles;
-var inject = require('./inject').inject;
+var injectBower = require('./inject').injectBower;
 
 
-gulp.task('watch', ['scripts:watch', 'styles', 'inject'], function() {
+gulp.task('watch', ['scripts:watch', 'styles', 'inject:bower'], function() {
 
   $.watch('bower.json', {
       read: false,
       name: 'watch: bower'
     }, function(file) {
     console.log(file.path);
-    inject();
+    injectBower();
   });
 
   $.watch([

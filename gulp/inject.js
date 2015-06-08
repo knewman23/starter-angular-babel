@@ -8,11 +8,11 @@ var config = require('./config');
 var paths = config.paths;
 
 
-gulp.task('inject', inject);
+gulp.task('inject:bower', injectBower);
 
 
 // inject dependency scripts
-function inject() {
+function injectBower() {
   return gulp.src(paths.src + '/index.html')
     .pipe(wiredep(config.wiredep))
     .pipe(gulp.dest(paths.tmp + '/serve'));
@@ -20,5 +20,5 @@ function inject() {
 
 
 module.exports = {
-  inject: inject
+  injectBower: injectBower
 };
