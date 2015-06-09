@@ -33,7 +33,7 @@ function renameProject(done) {
       '!' + paths.tmp + '/**/*'
     ])
     .pipe($.replace(oldName, newName))
-    .pipe($.replace(kebabOldName, kebabNewName))`
+    .pipe($.replace(kebabOldName, kebabNewName))
     .pipe(gulp.dest('.'));
 }
 
