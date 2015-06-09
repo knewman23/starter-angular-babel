@@ -91,7 +91,7 @@ gulp.task('dist', function () {
     .pipe(cssFilter)
     // .pipe($.debug({title: 'CSS FILES:'}))
     // replace the font paths with the path to the font folder in the dist folder
-    .pipe($.replace('../../bower_components/bootstrap-sass/assets/fonts/bootstrap/', '../fonts/'))
+    .pipe($.replace('../../bower_components/bootstrap-sass/assets/fonts/bootstrap/', 'fonts/'))
     .pipe($.minifyCss())
     .pipe(cssFilter.restore())
     .pipe(assets.restore())
@@ -138,8 +138,7 @@ gulp.task('images', function () {
 // setup gulp-rev-all
 var revAll = new $.revAll({
   // stop it from renaming index.html and favicon.ico
-  dontRenameFile: ['favicon.ico', 'index.html'],
-  dontSearchFile: ['vendor.js']
+  dontRenameFile: ['favicon.ico', 'index.html']
 });
 
 // Revision all the things in tmp dist directory and write to final dist location
