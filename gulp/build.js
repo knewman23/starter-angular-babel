@@ -153,11 +153,12 @@ gulp.task('rev', function() {
     .pipe(gulp.dest(paths.dist)); //write rev manifest to dist
 });
 
-gulp.task('build', function() {
+gulp.task('build', function(done) {
   $.sequence(
     'clean',
     ['html', 'styles', 'scripts', 'templates', 'fonts', 'images'],
     'dist',
-    'rev'
+    'rev',
+    done
   );
 });
