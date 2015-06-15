@@ -38,13 +38,27 @@ gulp.task('watch', ['html', 'styles', 'scripts:watch'], function() {
         .pipe(browserSync.stream());
   });
 
-  $.watch(paths.src + '/**/*.html', {
+  $.watch([
+      paths.src + '/**/*.html',
+      '!' + paths.src + '/index.html'
+    ], {
       read: false,
       name: 'watch: HTML'
     }, function(file) {
       console.log(file.path);
       browserSync.reload();
   });
+
+  $.watch(paths.src + '/index.html', {
+    read: false,
+    name: 'watch: index.html'
+  }, function(file) {
+    console.log(file.path);
+    html()
+      .on('end', function() {
+        browserSync.reload();
+      });
+  })
 
   // gulp.watch(paths.src + '/**/*.html', function(event) {
   //   browserSync.reload(event.path);
