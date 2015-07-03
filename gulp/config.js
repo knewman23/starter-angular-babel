@@ -6,7 +6,7 @@ var $ = {
 
 
 module.exports = {
-	appName: 'starterAngularBabel',
+	projectName: 'starterAngularBabel',
 	errorHandler: function (title) {
 		return function (err) {
 			$.util.log($.util.colors.red('[' + title + ']'), err.toString());
