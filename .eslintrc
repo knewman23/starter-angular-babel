@@ -25,12 +25,14 @@
       "tab"
     ],
     "no-trailing-spaces": [
-      2, {
+      2,
+	  {
         skipBlankLines: true
       }
     ],
     "camelcase": [
-      2, {
+      2,
+	  {
         "properties": "always"
       }
     ],
