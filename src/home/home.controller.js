@@ -1,14 +1,14 @@
 'use strict';
 
 class Home {
-  /* @ngInject */
-  constructor (assetsService, userService) {
+	/* @ngInject */
+	constructor(assetsService, userService) {
 
-    var vm = this;
-    vm.openAssets = assetsService.getOpenAssets();
+		var vm = this;
+		vm.openAssets = assetsService.getOpenAssets();
 
-    vm.user = userService.getCurrentUser();
-  }
+		vm.user = userService.getCurrentUser();
+	}
 }
 
 angular.module('starterAngularBabel').controller('Home', Home);

@@ -7,19 +7,23 @@
  */
 
 /* @ngInject */
-function <%= cameledName %>() {
+function
+<
+%= cameledName % > ()
+{
 
-  function link() {
+	function link() {
 
 
+	}
 
-  }
-
-  return {
-    templateUrl: 'components/<%= name %>/<%= htmlFilename %>',
-    restrict: 'EA',
-    link: link
-  };
+	return {
+		templateUrl: 'components/<%= name %>/<%= htmlFilename %>',
+		restrict: 'EA',
+		link: link
+	};
 }
 
-angular.module('<%= appName %>').directive('<%= cameledName %>', <%= cameledName %>);
+angular.module('<%= appName %>').directive('<%= cameledName %>', < %= cameledName % >
+)
+;

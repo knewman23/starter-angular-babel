@@ -3,20 +3,19 @@
 /* @ngInject */
 function bundledAsset() {
 
-  function link() {
+	function link() {
 
 
+	}
 
-  }
-
-  return {
-    templateUrl: 'bundledAsset/bundledAsset.template.html',
-    restrict: 'E',
-    scope: {
-      asset: '='
-    },
-    link: link
-  };
+	return {
+		templateUrl: 'bundledAsset/bundledAsset.template.html',
+		restrict: 'E',
+		scope: {
+			asset: '='
+		},
+		link: link
+	};
 }
 
 angular.module('starterAngularBabel').directive('bundledAsset', bundledAsset);

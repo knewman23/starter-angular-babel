@@ -7,10 +7,15 @@
  */
 
 /* @ngInject */
-function <%= PascaledName %>() {
+function
+<
+%= PascaledName % > ()
+{
 
-  var vm = this;
+	var vm = this;
 
 }
 
-angular.module('<%= appName %>').controller('<%= PascaledName %>', <%= PascaledName %>);
+angular.module('<%= appName %>').controller('<%= PascaledName %>', < %= PascaledName % >
+)
+;

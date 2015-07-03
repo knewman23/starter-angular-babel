@@ -1,19 +1,19 @@
 'use strict';
 
-describe('Controller: <%= PascaledName %>', function(){
-  var scope;
+describe('Controller: <%= PascaledName %>', function () {
+	var scope;
 
-  beforeEach(module('<%= appName %>'));
+	beforeEach(module('<%= appName %>'));
 
-  beforeEach(inject(function($rootScope) {
-    scope = $rootScope.$new();
-  }));
+	beforeEach(inject(function ($rootScope) {
+		scope = $rootScope.$new();
+	}));
 
-  it('should do something', inject(function($controller) {
+	it('should do something', inject(function ($controller) {
 
-    $controller('<%= PascaledName %>', {
-      $scope: scope
-    });
+		$controller('<%= PascaledName %>', {
+			$scope: scope
+		});
 
-  }));
+	}));
 });

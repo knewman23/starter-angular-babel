@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('starterAngularBabel', [
-  'ngSanitize',
-  'ui.router',
-  'ui.bootstrap'
+	'ngSanitize',
+	'ui.router',
+	'ui.bootstrap'
 ]);
