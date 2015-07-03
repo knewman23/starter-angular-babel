@@ -10,7 +10,7 @@ var $ = {
 
 var _ = require('lodash');
 var chalk = require('chalk');
-var argv = require('minimist')(process.argv);
+var args = require('minimist')(process.argv);
 
 var config = require('../config');
 var paths = config.paths;
@@ -20,8 +20,8 @@ var paths = config.paths;
 // Creates several files for when you need a full component (like a page, or or a big directive, or an include that needs a controller)
 gulp.task('component', function () {
 
-	var name = argv.n || argv.name;
-	var type = argv.t || argv.type;
+	var name = args.n || args.name;
+	var type = args.t || args.type;
 
 	// Check if name and type were both specified as arguments
 	if (name === undefined || type === undefined) {
