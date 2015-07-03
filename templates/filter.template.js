@@ -7,15 +7,10 @@
  */
 
 /* @ngInject */
-function
-<
-%= cameledName % > ()
-{
+function <%= cameledName %>() {
 	return function (input) {
 		return '<%= cameledName %> filter: ' + input;
 	};
 }
 
-angular.module('<%= appName %>').filter('<%= cameledName %>', < %= cameledName % >
-)
-;
+angular.module('<%= appName %>').filter('<%= cameledName %>', <%= cameledName %>);

@@ -7,12 +7,10 @@
  */
 
 /* @ngInject */
-function
-<
-%= cameledName % > ()
-{
+function <%= cameledName %>() {
 
 	function link() {
+
 
 
 	}
@@ -24,6 +22,4 @@ function
 	};
 }
 
-angular.module('<%= appName %>').directive('<%= cameledName %>', < %= cameledName % >
-)
-;
+angular.module('<%= appName %>').directive('<%= cameledName %>', <%= cameledName %>);
