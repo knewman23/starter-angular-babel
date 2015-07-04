@@ -5,6 +5,7 @@ var $ = {
 	sequence: require('run-sequence'),
 	minifyHtml: require('gulp-minify-html'),
 	minifyCss: require('gulp-minify-css'),
+	purifyCss: require('gulp-purifycss'),
 	angularTemplatecache: require('gulp-angular-templatecache'),
 	ngAnnotate: require('gulp-ng-annotate'),
 	filter: require('gulp-filter'),
@@ -93,6 +94,11 @@ gulp.task('dist', function () {
 		// replace the font paths with the path to the font folder in the dist folder
 		.pipe($.replace('../../bower_components/bootstrap-sass/assets/fonts/bootstrap/', 'fonts/'))
 		.pipe($.minifyCss())
+		.pipe($.purifyCss([
+			paths.src + '/**/*.js',
+			'!' + paths.src + '/**/*.spec.js',
+			paths.src + '/**/*.html'
+		]))
 		.pipe(cssFilter.restore())
 		.pipe(assets.restore())
 		.pipe($.useref())
