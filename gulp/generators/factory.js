@@ -11,7 +11,7 @@ var paths = config.paths;
 
 //===== Creates a single factory (type of service).
 gulp.task('factory', function () {
-	// copy a factory template, give it a cameledName and the appName
+	// copy a factory template, give it a cameledName and the moduleName
 	// put it in a folder if user specifies a directory
 	// otherwise, put it in services folder
 

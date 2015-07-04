@@ -2,7 +2,7 @@
 
 /**
  * @ngdoc directive
- * @name <%= appName %>.directive:<%= cameledName %>
+ * @name <%= moduleName %>.directive:<%= cameledName %>
  * @description
  */
 
@@ -22,4 +22,4 @@ function <%= cameledName %>() {
 	};
 }
 
-angular.module('<%= appName %>').directive('<%= cameledName %>', <%= cameledName %>);
+angular.module('<%= moduleName %>').directive('<%= cameledName %>', <%= cameledName %>);

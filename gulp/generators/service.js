@@ -11,7 +11,7 @@ var paths = config.paths;
 
 //===== Generates a single service.
 gulp.task('service', function () {
-	// copy a service template, give it a cameledName and the appName
+	// copy a service template, give it a cameledName and the moduleName
 	// put it in a folder if user specifies a directory
 	// otherwise, put it in services folder
 

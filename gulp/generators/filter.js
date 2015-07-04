@@ -11,7 +11,7 @@ var paths = config.paths;
 
 //===== Generates all the appropriate files for a new page.
 gulp.task('filter', function () {
-	// copy a filter template, give it a cameledName and the appName
+	// copy a filter template, give it a cameledName and the moduleName
 	// put it in a folder if user specifies a directory
 	// otherwise, put it in filters folder
 

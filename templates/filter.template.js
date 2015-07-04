@@ -2,7 +2,7 @@
 
 /**
  * @ngdoc filter
- * @name <%= appName %>.filter:<%= cameledName %>
+ * @name <%= moduleName %>.filter:<%= cameledName %>
  * @description
  */
 
@@ -13,4 +13,4 @@ function <%= cameledName %>() {
 	};
 }
 
-angular.module('<%= appName %>').filter('<%= cameledName %>', <%= cameledName %>);
+angular.module('<%= moduleName %>').filter('<%= cameledName %>', <%= cameledName %>);
