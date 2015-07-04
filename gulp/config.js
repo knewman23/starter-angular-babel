@@ -6,7 +6,8 @@ var $ = {
 
 
 module.exports = {
-	projectName: 'starterAngularBabel',
+	projectName: 'starter-angular-babel', // must be kebab-case
+	moduleName: 'starterAngularBabel', // must be camelCase
 	errorHandler: function (title) {
 		return function (err) {
 			$.util.log($.util.colors.red('[' + title + ']'), err.toString());

@@ -2,38 +2,63 @@ var gulp = require('gulp');
 var $ = {
 	replace: require('gulp-replace')
 };
+var chalk = require('chalk');
+var args = require('minimist')(process.argv);
+var _ = require('lodash');
 
 var config = require('./config');
 var paths = config.paths;
 
-function renameProject(done) {
+
+function hasUpperCase(str) {
+	return str.toLowerCase() !== str;
+}
+
+function renameProject() {
 	if (!args.name && !args.n) {
-		console.error(chalk.red('You must specify a new name for the project.') + '\n\nUsage:\n    gulp renameProject --name [name]\n    gulp renameProject -n [name]');
+		console.error(chalk.red('You must specify a new name for the project.') + '\n\nUsage:\n    gulp rename-project --name [name]\n    gulp rename-project -n [name]');
 		return;
 	}
-	var newName = args.name || args.n;
-	console.log('Changing project name from ' + config.appName + ' to ' + newName + '.');
 
-	var oldName = config.appName;
+	var oldProjectName = config.projectName;
+	var newProjectName = args.name || args.n;
 
-	// if new name is same as old name, do nothing
-	if (oldName == newName) {
+	var oldProjectNameKebab = _.kebabCase(oldProjectName);
+	var newProjectNameKebab = _.kebabCase(newProjectName);
+
+	var oldProjectNameCamel = _.camelCase(oldProjectName);
+	var newProjectNameCamel = _.camelCase(newProjectName);
+
+	var oldProjectNamePascal = _.capitalize(oldProjectNameCamel);
+	var newProjectNamePascal = _.capitalize(newProjectNameCamel);
+
+	if(hasUpperCase(newProjectName)) {
+		console.info(chalk.yellow('The project name you provided has been converted to its kebab-case equivalent: ' + chalk.green.bold(newProjectNameKebab) + '.'));
+	}
+
+	// if name is unchanged, do nothing
+	if(oldProjectName === newProjectNameKebab) {
+		console.warn(chalk.yellow('Project name will remain unchanged, as the provided name is the same as the current name.'));
 		done();
 		return;
 	}
 
-	var kebabOldName = _.kebabCase(oldName);
-	var kebabNewName = _.kebabCase(newName);
+	console.log('Changing project name from ' + chalk.gray.bold(oldProjectName) + ' to ' + chalk.green.bold(newProjectNameKebab) + '.');
 
+	// files get renamed using `newProjectName` regardless of kebab-case or camelCase
 	return gulp.src([
-		'**/*',
-		'!bower_components/**/*',
-		'!node_modules/**/*',
-		'!' + paths.dist + '/**/*',
-		'!' + paths.tmp + '/**/*'
-	])
-		.pipe($.replace(oldName, newName))
-		.pipe($.replace(kebabOldName, kebabNewName))
+			'**/*',
+			'!**/*.{jpg,jpeg,tiff,gif,png,ico}',
+			'!bower_components/**/*',
+			'!node_modules/**/*',
+			'!.git/**/*',
+			'!.idea/**/*',
+			'!' + paths.dist + '/**/*',
+			'!' + paths.tmp + '/**/*'
+		])
+		.pipe($.replace(oldProjectNamePascal, newProjectNamePascal))
+		.pipe($.replace(oldProjectNameCamel, newProjectNameCamel))
+		.pipe($.replace(oldProjectNameKebab, newProjectNameKebab))
 		.pipe(gulp.dest('.'));
 }
 
