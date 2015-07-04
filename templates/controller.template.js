@@ -2,7 +2,7 @@
 
 /**
  * @ngdoc controller
- * @name <%= appName %>.controller:<%= PascaledName %>
+ * @name <%= moduleName %>.controller:<%= PascaledName %>
  * @description
  */
 
@@ -13,4 +13,4 @@ function <%= PascaledName %>() {
 
 }
 
-angular.module('<%= appName %>').controller('<%= PascaledName %>', <%= PascaledName %>);
+angular.module('<%= moduleName %>').controller('<%= PascaledName %>', <%= PascaledName %>);

@@ -41,8 +41,7 @@ gulp.task('templates', function () {
 			conditionals: true
 		}))
 		.pipe($.angularTemplatecache('templateCacheHtml.js', {
-			// module name is same as appName by default - this can be changed of course if your module name differs from appName
-			module: config.projectName
+			module: config.moduleName
 		}))
 		.pipe(gulp.dest(paths.tmpTemplates));
 });

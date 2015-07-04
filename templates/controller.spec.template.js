@@ -3,7 +3,7 @@
 describe('Controller: <%= PascaledName %>', function () {
 	var scope;
 
-	beforeEach(module('<%= appName %>'));
+	beforeEach(module('<%= moduleName %>'));
 
 	beforeEach(inject(function ($rootScope) {
 		scope = $rootScope.$new();

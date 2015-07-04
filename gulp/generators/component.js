@@ -118,7 +118,7 @@ gulp.task('component', function () {
 		// .pipe($.debug({title: 'SOURCE FILES:'}))
 		// run all files through the templater
 		.pipe($.template({
-			'appName': config.projectName,
+			'moduleName': config.moduleName,
 			'name': name,
 			'cameledName': _.camelCase(name),
 			'PascaledName': _.capitalize(_.camelCase(name)),

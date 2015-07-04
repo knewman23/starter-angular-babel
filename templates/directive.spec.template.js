@@ -3,7 +3,7 @@
 describe('Directive: <%= cameledName %>', function () {
 
 	// load the directive's module
-	beforeEach(module('<%= appName %>'));
+	beforeEach(module('<%= moduleName %>'));
 
 	var element,
 		scope;
