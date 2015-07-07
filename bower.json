@@ -2,14 +2,14 @@
   "name": "starter-angular-babel",
   "version": "1.0.0",
   "dependencies": {
-    "angular": "~1.4.0",
-    "angular-sanitize": "~1.4.0",
-    "angular-ui-router": "~0.2.13",
-    "angular-bootstrap": "~0.13.0",
-    "lodash": "^3.7.0",
-    "bootstrap-sass": "^3.3.4"
+    "angular": "1.4.x",
+    "angular-sanitize": "1.4.x",
+    "angular-ui-router": "0.x",
+    "angular-bootstrap": "0.13.x",
+    "lodash": "3.x",
+    "bootstrap-sass": "3.x"
   },
   "devDependencies": {
-    "angular-mocks": "~1.4.0"
+    "angular-mocks": "1.4.x"
   }
 }
