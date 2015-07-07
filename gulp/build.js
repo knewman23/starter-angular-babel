@@ -46,6 +46,26 @@ gulp.task('templates', function () {
 		.pipe(gulp.dest(paths.tmpTemplates));
 });
 
+// all the files that purify-css needs to check for dynamic classes (e.g. ng-class)
+function determinePurifyFiles() {
+// dependency files that purify-css needs to check
+	var purifyDependencyFiles = [];
+	mainBowerFiles().forEach(function(file) {
+		// just html and js (in the form of angular templatecaches) files can contain ng-classes
+		if( _.endsWith(file, '.html') || _.endsWith(file, '.js') ) {
+			// strip out current working directory from beginning of file path
+			// see https://github.com/ck86/main-bower-files#youve-got-a-flat-folderfile-structure-after-pipegulpdestmydestpath
+			purifyDependencyFiles.push(file.replace(process.cwd() + '/', ''));
+		}
+	});
+
+	return [
+			paths.src + '/**/*.js',
+			'!' + paths.src + '/**/*.spec.js',
+			paths.src + '/**/*.html'
+		].concat(purifyDependencyFiles);;
+}
+
 gulp.task('dist', function () {
 	var templatesInjectFile = gulp.src(paths.tmpTemplates + '/templateCacheHtml.js', {read: false});
 	var templatesInjectOptions = {
@@ -94,11 +114,7 @@ gulp.task('dist', function () {
 		.pipe($.replace('../../bower_components/bootstrap-sass/assets/fonts/bootstrap/', 'fonts/'))
 		.pipe($.minifyCss())
 		// Remove unused CSS with purify-css
-		// .pipe($.purifyCss([
-		// 	paths.src + '/**/*.js',
-		// 	'!' + paths.src + '/**/*.spec.js',
-		// 	paths.src + '/**/*.html'
-		// ]))
+		.pipe($.purifyCss( determinePurifyFiles() ))
 		.pipe(cssFilter.restore())
 		.pipe(assets.restore())
 		.pipe($.useref())
