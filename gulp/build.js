@@ -47,23 +47,41 @@ gulp.task('templates', function () {
 });
 
 // all the files that purify-css needs to check for dynamic classes (e.g. ng-class)
-function determinePurifyFiles() {
-// dependency files that purify-css needs to check
+function determinePurifyFiles(excludes) {
+	if(!Array.isArray(excludes)) {
+		excludes = [];
+	}
+	// this is _.endsWith, but it takes an array of strings
+	function endsWith(str, targets) {
+		var endsWithAny = false;
+		targets.forEach(function(target) {
+			if(_.endsWith(str, target)) {
+				endsWithAny = true;
+				return false; //exit iteration early once the first one is found
+			}
+		});
+		return endsWithAny;
+	}
+
+	// dependency files that purify-css needs to check
 	var purifyDependencyFiles = [];
 	mainBowerFiles().forEach(function(file) {
 		// just html and js (in the form of angular templatecaches) files can contain ng-classes
-		if( _.endsWith(file, '.html') || _.endsWith(file, '.js') ) {
+		// ignore things in the exclude list
+		if( endsWith(file, ['.html', '.js']) && !endsWith(file, excludes) ) {
 			// strip out current working directory from beginning of file path
 			// see https://github.com/ck86/main-bower-files#youve-got-a-flat-folderfile-structure-after-pipegulpdestmydestpath
 			purifyDependencyFiles.push(file.replace(process.cwd() + '/', ''));
 		}
 	});
 
-	return [
-			paths.src + '/**/*.js',
-			'!' + paths.src + '/**/*.spec.js',
-			paths.src + '/**/*.html'
-		].concat(purifyDependencyFiles);;
+	var purifyFiles = [
+				paths.src + '/**/*.js',
+				'!' + paths.src + '/**/*.spec.js',
+				paths.src + '/**/*.html'
+			].concat(purifyDependencyFiles);
+	console.log(purifyFiles);
+	return purifyFiles;
 }
 
 gulp.task('dist', function () {
@@ -114,7 +132,7 @@ gulp.task('dist', function () {
 		.pipe($.replace('../../bower_components/bootstrap-sass/assets/fonts/bootstrap/', 'fonts/'))
 		.pipe($.minifyCss())
 		// Remove unused CSS with purify-css
-		.pipe($.purifyCss( determinePurifyFiles() ))
+		.pipe($.purifyCss( determinePurifyFiles(['bootstrap.js']) )) //ignore bootstrap.js because we don't use it
 		.pipe(cssFilter.restore())
 		.pipe(assets.restore())
 		.pipe($.useref())
