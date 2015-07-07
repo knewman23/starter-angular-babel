@@ -80,6 +80,7 @@ function determinePurifyFiles(excludes) {
 				'!' + paths.src + '/**/*.spec.js',
 				paths.src + '/**/*.html'
 			].concat(purifyDependencyFiles);
+
 	console.log(purifyFiles);
 	return purifyFiles;
 }
