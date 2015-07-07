@@ -81,7 +81,7 @@ function determinePurifyFiles(excludes) {
 				paths.src + '/**/*.html'
 			].concat(purifyDependencyFiles);
 
-	console.log(purifyFiles);
+	// console.log(purifyFiles);
 	return purifyFiles;
 }
 
